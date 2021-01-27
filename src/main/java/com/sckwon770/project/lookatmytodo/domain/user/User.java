@@ -1,6 +1,7 @@
 package com.sckwon770.project.lookatmytodo.domain.user;
 
 import com.sckwon770.project.lookatmytodo.domain.BaseTimeEntity;
+import com.sckwon770.project.lookatmytodo.domain.todo.Todo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ public class User extends BaseTimeEntity {
 
     @Column(nullable = false)
     private String email;
+
+    private Todo[] todos;
 
     @Builder
     public User(String name, String email) {
