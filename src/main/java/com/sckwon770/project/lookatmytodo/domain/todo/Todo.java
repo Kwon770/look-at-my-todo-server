@@ -46,12 +46,13 @@ public class Todo {
         this.priority = 1;
     }
 
-    public void update(String title, Boolean isCompleted,
+    public Todo update(String title, Boolean isCompleted,
                        String closingDate, String closingTime, Integer priority) {
         this.title = title;
         this.isCompleted = isCompleted;
         this.closingDate = LocalDate.parse(closingDate);
         this.closingTime = LocalTime.parse(closingTime);
         this.priority = priority;
+        return this;
     }
 }

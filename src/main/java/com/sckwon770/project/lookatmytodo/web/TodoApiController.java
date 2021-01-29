@@ -1,6 +1,5 @@
 package com.sckwon770.project.lookatmytodo.web;
 
-import com.sckwon770.project.lookatmytodo.domain.todo.TodoRepository;
 import com.sckwon770.project.lookatmytodo.service.TodoService;
 import com.sckwon770.project.lookatmytodo.web.dto.TodoResponseDto;
 import com.sckwon770.project.lookatmytodo.web.dto.TodoSaveRequestDto;
@@ -37,4 +36,9 @@ public class TodoApiController {
         return id;
     }
 
+    @PostMapping("/api/v1/todo/{author}/{id}/toggleState")
+    public Long toggleState(@PathVariable String author, @PathVariable Long id) {
+        todoService.toggleState(author, id);
+        return id;
+    }
 }

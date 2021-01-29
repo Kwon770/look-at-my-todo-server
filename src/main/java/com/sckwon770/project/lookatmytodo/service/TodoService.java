@@ -2,6 +2,7 @@ package com.sckwon770.project.lookatmytodo.service;
 
 import com.sckwon770.project.lookatmytodo.domain.todo.Todo;
 import com.sckwon770.project.lookatmytodo.domain.todo.TodoRepository;
+import com.sckwon770.project.lookatmytodo.domain.user.UserRepository;
 import com.sckwon770.project.lookatmytodo.web.dto.TodoResponseDto;
 import com.sckwon770.project.lookatmytodo.web.dto.TodoUpdateRequestDto;
 import com.sckwon770.project.lookatmytodo.web.dto.TodoSaveRequestDto;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class TodoService {
 
     private final TodoRepository todoRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     public Long save(String author, TodoSaveRequestDto requestDto) {
@@ -33,7 +35,7 @@ public class TodoService {
                 requestDto.getClosingDate(), requestDto.getClosingTime(),
                 requestDto.getPriority());
 
-        return id;
+        return todoRepository.save(todo).getId();
     }
 
     @Transactional
@@ -54,5 +56,20 @@ public class TodoService {
         });
 
         return responseDtoList;
+    }
+
+    @Transactional
+    public void toggleState(String author, Long id) {
+        Todo todo = todoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("No such Todo exists. id=" + id));
+
+        if (todo.getIsCompleted()) {
+            todoRepository.setisCompletedFalseById(id);
+            userRepository.addScoreByAuthor(author);
+        }
+        else {
+            todoRepository.setisCompletedTrueById(id);
+            userRepository.subtractScoreByAuthor(author);
+        }
     }
 }
