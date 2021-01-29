@@ -22,7 +22,8 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private String email;
 
-    private Todo[] todos;
+    @Column(nullable = false)
+    private Integer score;
 
     @Builder
     public User(String name, String email) {
