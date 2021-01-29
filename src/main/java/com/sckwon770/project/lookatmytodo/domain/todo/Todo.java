@@ -37,8 +37,8 @@ public class Todo {
 //    private String detailTerm;
 
     @Builder
-    public Todo(String title, String author) {
-        this.title = title;
+    public Todo(String author) {
+        this.title = "Todo";
         this.author = author;
         this.isCompleted = false;
         this.closingDate = LocalDate.now();

@@ -6,19 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
 public class TodoSaveRequestDto {
 
-    private String title;
-
     @Builder
-    public TodoSaveRequestDto(String title) {
-        this.title = title;
+    public TodoSaveRequestDto() {
     }
 
     public Todo toEntity(String author) {
         return Todo.builder()
-                .title(title)
                 .author(author)
                 .build();
     }

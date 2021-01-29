@@ -32,8 +32,9 @@ public class TodoApiController {
     }
 
     @DeleteMapping("/api/v1/todo/{author}/{id}")
-    public Long delete(@@PathVariable Long id) {
+    public Long delete(@PathVariable Long id) {
         todoService.delete(id);
         return id;
     }
+
 }
