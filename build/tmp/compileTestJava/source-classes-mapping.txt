@@ -1,0 +1,4 @@
+com/kwon770/lamt/LamtApplicationTests.java
+ com.kwon770.lamt.LamtApplicationTests
+com/kwon770/lamt/domain/UserRepositoryTest.java
+ com.kwon770.lamt.domain.UserRepositoryTest
