@@ -37,7 +37,7 @@ public class TodoApiController {
     }
 
     @GetMapping("/api/v1/todo/{user}")
-    public List<Todo> findAllByUserOrderByPriorityDesc(@PathVariable String user) {
-        return todoService.findAllByUserOrderByPriorityDesc(user);
+    public List<Todo> findAllByUserAndClosingDateGreaterThanEqualOrderByPriorityDesc(@PathVariable String user) {
+        return todoService.findAllByUserAndClosingDateGreaterThanEqualOrderByPriorityDesc(user);
     }
 }

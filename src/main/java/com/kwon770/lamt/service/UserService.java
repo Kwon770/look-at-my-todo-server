@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -20,5 +22,9 @@ public class UserService {
 
     public User findByName(String name) {
         return userRepository.findByName(name);
+    }
+
+    public List<User> getTop10ByOrderByScoreDesc() {
+        return userRepository.getTop10ByOrderByScoreDesc();
     }
 }

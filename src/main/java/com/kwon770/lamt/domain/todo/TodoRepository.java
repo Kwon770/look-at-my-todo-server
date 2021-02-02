@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
-    List<Todo> findAllByUserOrderByPriorityDesc(String user);
+    List<Todo> findAllByUserAndClosingDateGreaterThanEqualOrderByPriorityDesc(String user, String closingDate);
 
     @Transactional
     @Modifying

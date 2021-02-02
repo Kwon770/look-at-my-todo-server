@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -53,7 +54,8 @@ public class TodoService {
         }
     }
 
-    public List<Todo> findAllByUserOrderByPriorityDesc(String user) {
-        return todoRepository.findAllByUserOrderByPriorityDesc(user);
+    public List<Todo> findAllByUserAndClosingDateGreaterThanEqualOrderByPriorityDesc(String user) {
+        String today = LocalDate.now().toString();
+        return todoRepository.findAllByUserAndClosingDateGreaterThanEqualOrderByPriorityDesc(user, today);
     }
 }
