@@ -8,13 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    User findByName(String name);
+
     @Transactional
     @Modifying
     @Query("UPDATE User SET score = score + 1 WHERE name = :name")
-    void increaseScoreByAuthor(@Param("name") String author);
+    void increaseScoreByUser(@Param("name") String user);
 
     @Transactional
     @Modifying
     @Query("UPDATE User SET score = score - 1 WHERE name = :name")
-    void decreaseScoreByAuthor(@Param("name") String author);
+    void decreaseScoreByUser(@Param("name") String user);
 }

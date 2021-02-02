@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
-    List<Todo> findAllByAuthorOrderByPriorityDesc(String author);
+    List<Todo> findAllByUserOrderByPriorityDesc(String user);
 
     @Transactional
     @Modifying

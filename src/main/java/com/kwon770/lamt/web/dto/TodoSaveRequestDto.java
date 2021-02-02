@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class TodoCreateRequestDto {
-    public Todo toEntity(String author) {
+public class TodoSaveRequestDto {
+    public Todo toEntity(String user) {
         return Todo.builder()
-                .author(author)
+                .user(user)
                 .build();
     }
 }

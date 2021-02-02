@@ -23,7 +23,7 @@ public class Todo {
     private String title;
 
     @Column(nullable = false)
-    private String author;
+    private String user;
 
     @Column(nullable = false)
     private Boolean isCompleted;
@@ -36,9 +36,9 @@ public class Todo {
     private Integer priority;
 
     @Builder
-    public Todo(String author) {
+    public Todo(String user) {
         this.title = "Todo";
-        this.author = author;
+        this.user = user;
         this.isCompleted = false;
         this.closingDate = LocalDate.now().toString();
         DateTimeFormatter tFormatter = DateTimeFormatter.ofPattern("HH:mm");
