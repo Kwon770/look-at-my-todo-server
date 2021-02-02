@@ -4,9 +4,6 @@ import com.kwon770.lamt.domain.todo.Todo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 @Getter
 @NoArgsConstructor
 public class TodoResponseDto {
@@ -14,8 +11,8 @@ public class TodoResponseDto {
     private Long id;
     private String title;
     private Boolean isCompleted;
-    private LocalDate closingDate;
-    private LocalTime closingTime;
+    private String closingDate;
+    private String closingTime;
     private Integer priority;
 
     public TodoResponseDto(Todo entity) {

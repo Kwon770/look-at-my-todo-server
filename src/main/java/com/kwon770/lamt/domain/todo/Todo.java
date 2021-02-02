@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -27,9 +28,9 @@ public class Todo {
     @Column(nullable = false)
     private Boolean isCompleted;
 
-    private LocalDate closingDate;
+    private String closingDate;
 
-    private LocalTime closingTime;
+    private String closingTime;
 
     @Column(nullable = false)
     private Integer priority;
@@ -39,15 +40,16 @@ public class Todo {
         this.title = "Todo";
         this.author = author;
         this.isCompleted = false;
-        this.closingDate = LocalDate.now();
-        this.closingTime = LocalTime.now();
+        this.closingDate = LocalDate.now().toString();
+        DateTimeFormatter tFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        this.closingTime = LocalTime.now().format(tFormatter);
         this.priority = 1;
     }
 
     public Todo update(String title, String closingDate, String closingTime, Integer priority) {
         this.title = title;
-        this.closingDate = LocalDate.parse(closingDate);
-        this.closingTime = LocalTime.parse(closingTime);
+        this.closingDate = closingDate;
+        this.closingTime = closingTime;
         this.priority = priority;
         return this;
     }

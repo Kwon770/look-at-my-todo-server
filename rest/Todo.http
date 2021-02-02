@@ -1,9 +1,1 @@
-#PUT http://localhost:8080/api/v1/todo/sketom/1
-#Content-Type: application/json
-#{
-#title: "updatedTodo",
-#closingDate:
-#}
-
-#POST http://localhost:8080/api/v1/todo/sketom/create
-GET http://localhost:8080/api/v1/todo/sketom
+PATCH http://localhost:8080/api/v1/todo/sketom/1/toggle
