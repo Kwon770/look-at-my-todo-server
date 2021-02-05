@@ -22,13 +22,16 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private String email;
 
+    private String profile;
+
     @Column(nullable = false)
     private Integer score;
 
     @Builder
-    public User(String name, String email) {
+    public User(String name, String email, String profile) {
         this.name = name;
         this.email = email;
+        this.profile = profile;
         this.score = 0;
     }
 
