@@ -11,20 +11,20 @@ public class UserSaveRequestDto {
 
     private String name;
     private String email;
-    private String profile;
+    private String picture;
 
     @Builder
-    public UserSaveRequestDto(String name, String email, String profile) {
+    public UserSaveRequestDto(String name, String email, String picture) {
         this.name = name;
         this.email = email;
-        this.profile = profile;
+        this.picture = picture;
     }
 
     public User toEntity() {
         return User.builder()
                 .name(name)
                 .email(email)
-                .profile(profile)
+                .picture(picture)
                 .build();
     }
 }

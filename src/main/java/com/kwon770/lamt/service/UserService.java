@@ -24,6 +24,18 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
+    public Long requestLogin(UserSaveRequestDto userSaveRequestDto) {
+        System.out.println(userSaveRequestDto.getName());
+        System.out.println(userSaveRequestDto.getEmail());
+        System.out.println(userSaveRequestDto.getPicture());
+        User result = findByName(userSaveRequestDto.getName());
+        if (result != null) {
+            return result.getId();
+        } else {
+            return save(userSaveRequestDto);
+        }
+    }
+
     public List<User> getTop10ByOrderByScoreDesc() {
         return userRepository.getTop10ByOrderByScoreDesc();
     }

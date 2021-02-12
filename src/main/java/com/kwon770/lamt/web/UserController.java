@@ -14,7 +14,7 @@ public class UserController {
 
     @PostMapping("/api/v1/user")
     public Long create(@RequestBody UserSaveRequestDto userSaveRequestDto) {
-        return userService.save(userSaveRequestDto);
+        return userService.requestLogin(userSaveRequestDto);
     }
 
     @GetMapping("/api/v1/user/{name}")
